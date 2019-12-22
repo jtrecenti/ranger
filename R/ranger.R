@@ -540,8 +540,8 @@ ranger <- function(formula = NULL, data = NULL, num.trees = 500, mtry = NULL,
     if (max(regularization.factor) > 1) {
       stop("The regularization coefficients cannot be greater than 1.")
     }
-    if (max(regularization.factor) <= 0) {
-      stop("The regularization coefficients cannot be smaller than 0.")
+    if (min(regularization.factor) <= 0) {
+      stop("The regularization coefficients must be greater than 0.")
     }
     p <- length(all.independent.variable.names)
     if (length(regularization.factor) != 1 && length(regularization.factor) != p) {
